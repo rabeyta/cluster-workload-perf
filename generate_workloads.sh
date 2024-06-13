@@ -7,7 +7,7 @@ TEMPLATE=$1
 OUTPUT_FOLDER="workloads"
 
 for ns in "${namespaces[@]}"; do
-  for ((i=1; i<=20; i++)); do
+  for ((i=1; i<=10; i++)); do
       OUTPUT_WORKLOAD="$OUTPUT_FOLDER/$ns/workload-$i.yaml"
       mkdir -p "$OUTPUT_FOLDER/$ns"
       cp "$1" "$OUTPUT_WORKLOAD"
