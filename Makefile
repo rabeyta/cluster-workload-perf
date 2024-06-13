@@ -2,6 +2,10 @@
 apply: ## Apply generated workloads
 	./apply_workloads.sh
 
+.PHONY: delete
+delete: ## Delete generated workloads
+	./delete_workloads.sh
+
 .PHONY: generate
 generate: ## generate workloads
 	./generate_workloads.sh templates/service-with-db.yaml
