@@ -1,0 +1,40 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: WORKLOAD_NAME_PLACEHOLDER
+  namespace: NAMESPACE_PLACEHOLDER
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/carvel-package-workflow: "true"
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/auto-configure-actuators: "true"
+    app.kubernetes.io/part-of: WORKLOAD_NAME_PLACEHOLDER
+spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"
+      - name: BP_OPENTELEMETRY_ENABLED
+        value: "true"
+  env:
+    - name: OTEL_JAVAAGENT_ENABLED
+      value: "true"
+    - name: OTEL_METRICS_EXPORTER
+      value: "otlp"
+    - name: OTEL_TRACES_EXPORTER
+      value: "otlp"
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: "http://wavefront-proxy.observability-system.svc.cluster.local:4317"
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
+  - name: iterate
+    value: "true"
+  - name: gitops_ssh_secret
+    value: github-basic-auth
+  source:
+    git:
+      url: https://github.com/rabeyta/vscode-priv-03-22
+      ref:
+        branch: main
