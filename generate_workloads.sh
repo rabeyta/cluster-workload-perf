@@ -4,10 +4,11 @@ sed=gsed
 namespaces=(dev unicorn robert demos bob)
 
 TEMPLATE=$1
+NUMBER_OF_WORKLOADS=$2
 OUTPUT_FOLDER="workloads"
 
 for ns in "${namespaces[@]}"; do
-  for ((i=1; i<=10; i++)); do
+  for ((i=1; i<=NUMBER_OF_WORKLOADS; i++)); do
       OUTPUT_WORKLOAD="$OUTPUT_FOLDER/$ns/workload-$i.yaml"
       mkdir -p "$OUTPUT_FOLDER/$ns"
       cp "$1" "$OUTPUT_WORKLOAD"

@@ -1,3 +1,6 @@
+
+WORKLOADS_TO_GENERATE_PER_NS ?= 5
+
 .PHONY: apply
 apply: ## Apply generated workloads
 	./apply_workloads.sh
@@ -8,7 +11,7 @@ delete: ## Delete generated workloads
 
 .PHONY: generate
 generate: ## generate workloads
-	./generate_workloads.sh templates/service-with-db.yaml
+	./generate_workloads.sh templates/service-with-db.yaml $(WORKLOADS_TO_GENERATE_PER_NS)
 
 # Based on http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help: ## Print help for each make target
