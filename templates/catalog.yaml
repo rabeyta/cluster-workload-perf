@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: WORKLOAD_NAME_PLACEHOLDER
+  description: generated workload
+  tags:
+    - java
+    - spring
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=WORKLOAD_NAME_PLACEHOLDER'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: default-a
